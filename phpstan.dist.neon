@@ -1,0 +1,84 @@
+includes:
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-dangerous-calls.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-execution-calls.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-insecure-calls.neon
+
+conditionalTags:
+    PHPStan\Rules\StrictCalls\DynamicCallOnStaticMethodsRule:
+        phpstan.rules.rule: true
+
+parameters:
+    level: 8
+    treatPhpDocTypesAsCertain: false
+
+    # Stricter rules
+    checkMissingCallableSignature: true
+
+    featureToggles:
+        bleedingEdge: true
+        skipCheckGenericClasses!:
+            - Symfony\Component\HttpFoundation\InputBag
+            - Symfony\Component\Form\AbstractType
+
+    paths:
+        - src
+        - tests
+        - migrations
+
+    strictRules:
+        booleansInConditions: false
+        disallowedLooseComparison: true
+
+    disallowedClasses:
+        -
+            class: Symfony\Bundle\FrameworkBundle\Controller\AbstractController
+            message: use the AsController attribute instead.
+
+    disallowedFunctionCalls:
+        -
+            function: ['call_user_func()', 'call_user_func_array()']
+            message: 'invoke the callable directly instead.'
+        -
+            function: 'chmod()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::chmod() instead.'
+        -
+            function: 'chgrp()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::chgrp() instead.'
+        -
+            function: 'chown()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::chown() instead.'
+        -
+            function: 'copy()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::copy() instead.'
+        -
+            function: 'file_exists()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::exists() instead.'
+        -
+            function: 'file_get_contents()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::readFile() instead.'
+        -
+            function: 'file_put_contents()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::dumpFile() instead.'
+        -
+            function: 'mkdir()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::mkdir() instead.'
+        -
+            function: 'rename()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::rename() instead.'
+        -
+            function: 'touch()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::touch() instead.'
+        -
+            function: 'unlink()'
+            message: 'use Symfony\Component\Filesystem\Filesystem::remove() instead.'
+
+    disallowedStaticCalls:
+        -
+            method:
+                - 'DateTime::createFromFormat()'
+                - 'DateTimeImmutable::createFromFormat()'
+            message: 'use Symfony\Component\Clock\DatePoint::createFromFormat() instead.'
+
+    symfony:
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml

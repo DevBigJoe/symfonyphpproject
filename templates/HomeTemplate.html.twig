@@ -1,0 +1,125 @@
+{% extends '@default/base.html.twig' %}
+{% block body %}
+
+	<section
+		class="bg-white">
+		{# Banner #}
+		<my-content>
+			<section class="relative bg-gradient-to-br from-primary-800 via-primary-800 to-primary-800 text-white overflow-hidden">
+				<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20"></div>
+
+				<div class="container-wide section-spacing relative">
+					<div class="max-w-4xl">
+						<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+							StudyShare -<br>von Studis für Studis</br>
+					</h1>
+					<p class="text-xl md:text-2xl text-primary-100 mb-8 leading-relaxed">
+						Prüfungsmaterialen, hilfreiche Tipps und vieles mehr!
+					</p>
+					<div class="flex flex-col sm:flex-row gap-4">
+						<a href="/register" class="inline-block bg-white text-primary-800 px-8 py-4 rounded-lg font-semibold hover:bg-primary-50 transition-colors text-center">
+							Jetzt starten
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</my-content>
+
+	{#Hero Section#}
+	<my-content>
+		<section class="section-spacing bg-white">
+			<div class="container-narrow">
+				<div class="text-center mb-12">
+					<span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">StudyShare</span>
+					<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">
+						Die Plattform für Studierende
+					</h2>
+					<p class="text-lg text-slate-600">
+						Wir erklären dem Prüfungsstress den Krieg!
+					</p>
+				</div>
+
+				<div class="prose prose-lg prose-slate max-w-none">
+					<p>
+						Du bist ein Ersti und weißt nicht, was in den Prüfungen auf dich zu kommt?
+						Keine Angst, StudyShare bietet ein hilfreiches Portal, in dem sich Studierende gegenseitig unterstützen,
+						hilfreiche Tipps geben und ihre Prüfungsmaterialien teilen können.
+					</p>
+					<p>
+						Auch du kannst dein Wissen teilen und hilfreiches Feedback erhalten. Starte zuversichtlich und
+						gut vorbereitet in die Prüfungsphase!
+					</p>
+				</div>
+			</div>
+		</section>
+	</my-content>
+
+	{# Features #}
+	<my-content>
+		<section class="section-spacing bg-slate-50">
+			<div class="container-wide">
+				<div class="text-center mb-12">
+					<span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">StudyShare</span>
+					<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">
+						Warum Studyshare?
+					</h2>
+					<p class="text-lg text-slate-600">
+						Das bieten wir:
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+						<div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-slate-900 mb-3">Prüfungsmaterialien</h3>
+						<p class="text-slate-600">
+							Altklausuren, Lernzettel, Übungsaufgaben
+						</p>
+					</div>
+
+					<div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+						<div class="w-12 h-12 bg-accent-100 text-accent-600 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-slate-900 mb-3">Feedback</h3>
+						<p class="text-slate-600">
+							Erhalte auf deine Materialien Feedback von Studierenden die das Modul bereits bestanden haben.
+						</p>
+					</div>
+
+					<div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+						<div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-slate-900 mb-3">Austausch</h3>
+						<p class="text-slate-600">
+							Mal eine Vorlesung verpasst? Kein Problem, tausche dich mit deinen Mitstudierenden aus und sei up to date.
+						</p>
+					</div>
+
+					<div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+						<div class="w-12 h-12 bg-accent-100 text-accent-600 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+								<circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-slate-900 mb-3">Community</h3>
+						<p class="text-slate-600">
+							Finde Gleichgesinnte, Studymates und neue Freunde!
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</my-content>
+</section>{% endblock %}

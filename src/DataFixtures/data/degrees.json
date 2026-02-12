@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Angewandte Informatik",
+        "description": "Computer, Mathematik & Software Engineering"
+    },
+    {
+        "name": "Wirtschaftsinformatik",
+        "description": "Wirtschaft, Informatik & Management"
+    },
+    {
+        "name": "Maschinenbau",
+        "description": "Konstruktion, Fertigung & Produktionstechnik"
+    },
+    {
+        "name": "Elektrotechnik",
+        "description": "Strom, Schaltungen & Automatisierung"
+    },
+    {
+        "name": "BWL",
+        "description": "Betriebswirtschaft, Finanzen & Unternehmensführung"
+    },
+    {
+        "name": "Soziale Arbeit",
+        "description": "Sozialpädagogik, Beratung & Jugendhilfe"
+    },
+    {
+        "name": "Medieninformatik",
+        "description": "Digitale Medien, UX & Webentwicklung"
+    },
+    {
+        "name": "Wirtschaftsingenieurwesen",
+        "description": "Technik & BWL im Verbund"
+    },
+    {
+        "name": "Pflegewissenschaft",
+        "description": "Pflege, Gesundheit & Versorgungsforschung"
+    },
+    {
+        "name": "Architektur",
+        "description": "Planung, Entwurf & Bauwesen"
+    }
+]

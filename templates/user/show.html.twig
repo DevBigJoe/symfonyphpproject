@@ -1,0 +1,32 @@
+{% extends '@default/base.html.twig' %}
+
+{% block body %}
+	<div class="container-narrow bg-white pb-10 pt-10 my-6">
+		<h2 class="text-3xl">
+			User #{{user.id}}</h4>
+		<h6 class="text-md font-bold mt-4">
+			E-Mail:
+		</h6>
+		<p>{{user.email}}</p>
+		<h6 class="text-md font-bold mt-2">
+			Roles:
+		</h6>
+		<p>
+			{{user.roles|map(s=>s|split('_')|last)|join(', ')}}</p>
+		<h6 class="text-md font-bold mt-2">
+			Registrierungsdatum:
+		</h6>
+		<p>
+			{{user.createdAt|date('d.m.Y H:i')}}
+		</p>
+		<h6 class="text-md font-bold mt-2">
+			Ist Verifiziert?
+		</h6>
+		<p>
+			{{user.isVerified ? "Ja" : "Nein"}}
+		</p>
+
+		<a class="block mt-4 underline" href="/admin/users">Zurück</a>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends '@default/base.html.twig' %}
+
+{% block body %}
+
+    <div class="flex justify-center mb-12 text-left bg-white border-t-stone-50 border-t-2 pt-4">
+		<table class="table-auto">
+			<thead>
+				<tr class="">
+					<th class="p-4">Titel</th>
+					<th class="p-4">Autor</th>
+					<th class="p-4">Veröffentlichungsdatum</th>
+					<th class="p-4">Veröffentlichungsstatus</th>
+					<th class="p-4"></th>
+					<th class="p-4"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for article in articles %}
+					<tr>
+                        <td class="p-4">{{article.title}}</td>
+                        <td class="p-4">{{article.author.name}}</td>
+                        <td class="p-4">{{article.publishedAt|date('d.m.Y H:i') }} Uhr</td>
+						{% if article.published %}
+							<td class="p-4">veröffentlicht</td>
+						{% else %}
+							<td class="p-4">nicht veröffentlicht</td>
+						{% endif %}
+						<td class="p-4">
+							<button type="submit"class="px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+								<a href="/overview/{{article.id}}/edit">Bearbeiten</a>
+							</button>
+						</td>
+						<td>
+							<form method="post" action="{{ path('overview_delete', {id: article.id}) }}" onsubmit="return confirm('Artikel wirklich löschen?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete-article' ~ article.id) }}">
+								<button type="submit"class="px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+									Löschen
+								</button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+framework:
+    messenger:
+        transports:
+            # Transport "async" mit Doctrine (DB) als Queue
+            async: '%env(MESSENGER_TRANSPORT_DSN)%'
+
+        routing:
+            App\Message\PublishTopicMessage: async

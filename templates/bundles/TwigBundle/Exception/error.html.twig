@@ -1,0 +1,233 @@
+{# templates/bundles/TwigBundle/Exception/error.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Ein Fehler ist aufgetreten ({{ status_code }}){% endblock %}
+
+{% block body %}
+<div class="container text-center mt-5">
+    <h1>Oops! Ein Fehler ist aufgetreten</h1>
+    <h2>{{ status_code }} – {{ status_text }}</h2>
+
+    <!--
+    {% if app.environment == 'dev' %}
+        <p class="text-muted">{{ exception.message }}</p>
+    {% endif %}
+    -->
+
+    <style>
+/* Farben */
+:root {
+    --gb: #F2EEE8;
+    --wh: #FFFFFF;
+    --dark: #383A41;
+    --red: #EB6D6D;
+    --blue: #5E7FDC;
+    --break: 400px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--gb);
+    font-family: 'Open Sans', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: content-box;
+    transform: translate3d(0, 0, 0);
+}
+
+.face {
+    width: 300px;
+    height: 300px;
+    border: 4px solid var(--dark);
+    border-radius: 10px;
+    background-color: var(--wh);
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 400px) {
+    .face {
+        margin-top: 40px;
+        transform: scale(.8);
+    }
+}
+
+.face .band {
+    width: 350px;
+    height: 27px;
+    border: 4px solid var(--dark);
+    border-radius: 5px;
+    margin-left: -25px;
+    margin-top: 50px;
+    position: relative;
+}
+
+.face .band .red,
+.face .band .white,
+.face .band .blue {
+    width: 100%;
+    height: calc(100% / 3);
+}
+
+.face .band .red {
+    background-color: var(--red);
+}
+
+.face .band .white {
+    background-color: var(--wh);
+}
+
+.face .band .blue {
+    background-color: var(--blue);
+}
+
+.face .band:before {
+    content: "";
+    display: inline-block;
+    height: 27px;
+    width: 30px;
+    background-color: rgba(255,255,255,0.3);
+    position: absolute;
+    z-index: 999;
+}
+
+.face .band:after {
+    content: "";
+    display: inline-block;
+    height: 27px;
+    width: 30px;
+    background-color: rgba(56,58,65,0.3);
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    margin-top: -27px;
+}
+
+.face .eyes {
+    width: 128px;
+    margin: 0 auto;
+    margin-top: 40px;
+    position: relative;
+}
+
+.face .eyes:before,
+.face .eyes:after {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+    border: 7px solid var(--dark);
+    border-bottom: 0;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+}
+
+.face .eyes:before {
+    margin-right: 20px;
+}
+
+.face .eyes:after {
+    margin-left: 20px;
+}
+
+.face .dimples {
+    width: 180px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.face .dimples:before,
+.face .dimples:after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(235,109,109,0.4);
+}
+
+.face .dimples:before {
+    margin-right: 80px;
+}
+
+.face .dimples:after {
+    margin-left: 80px;
+}
+
+.face .mouth {
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--dark);
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+h1 {
+    font-weight: 800;
+    color: var(--dark);
+    text-align: center;
+    font-size: 2.5em;
+    padding-top: 20px;
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 2em;
+    }
+}
+
+.btn {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    padding: 20px;
+    background-color: var(--blue);
+    color: white;
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    transition: all .2s linear;
+}
+
+@media screen and (max-width: 400px) {
+    .btn {
+        margin-top: 60px;
+        width: 200px;
+    }
+}
+
+.btn:hover {
+    background-color: rgba(94,127,220,0.8);
+    transition: all .2s linear;
+}
+</style>
+</head>
+<body>
+
+<div class="face">
+    <div class="band">
+        <div class="red"></div>
+        <div class="white"></div>
+        <div class="blue"></div>
+    </div>
+    <div class="eyes"></div>
+    <div class="dimples"></div>
+    <div class="mouth"></div>
+</div>
+
+<h1>Oops! Something went wrong!</h1>
+<div class="btn">Return to Home</div>
+
+</div>
+{% endblock %}

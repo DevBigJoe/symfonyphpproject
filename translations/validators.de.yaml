@@ -1,0 +1,30 @@
+course:
+    name:
+        not_blank: 'Der Name darf nicht leer sein.'
+        min_length: 'Der Name muss mindestens {{ limit }} Zeichen lang sein.'
+        max_length: 'Der Name darf maximal {{ limit }} Zeichen lang sein.'
+    description:
+        not_blank: 'Die Beschreibung darf nicht leer sein.'
+        min_length: 'Die Beschreibung muss mindestens {{ limit }} Zeichen lang sein.'
+        max_length: 'Die Beschreibung darf maximal {{ limit }} Zeichen lang sein.'
+    unique: 'Es existiert bereits ein Kurs mit diesem Namen.'
+
+degree:
+    name:
+        not_blank: 'Der Name darf nicht leer sein.'
+        min_length: 'Der Name muss mindestens {{ limit }} Zeichen lang sein.'
+        max_length: 'Der Name darf maximal {{ limit }} Zeichen lang sein.'
+    description:
+        not_blank: 'Die Beschreibung darf nicht leer sein.'
+        min_length: 'Die Beschreibung muss mindestens {{ limit }} Zeichen lang sein.'
+        max_length: 'Die Beschreibung darf maximal {{ limit }} Zeichen lang sein.'
+    unique: 'Es existiert bereits ein Studiengang mit diesem Namen.'
+
+article:
+    title:
+        not_blank: 'Der Titel darf nicht leer sein.'
+        min_length: 'Der Titel muss mindestens {{ limit }} Zeichen lang sein.'
+        max_length: 'Der Titel darf maximal {{ limit }} Zeichen lang sein.'
+    content:
+        not_blank: 'Der Inhalt darf nicht leer sein.'
+        min_length: 'Der Inhalt muss mindestens {{ limit }} Zeichen lang sein.'

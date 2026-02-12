@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Custom Theme Configuration for Tailwind CSS v4 */
+@theme {
+    /* Custom Color Palette */
+    --color-primary: #11C200;
+
+    --color-primary-50: #EEFFF6;
+    --color-primary-100: #e0e7ff;
+    --color-primary-200: #c7d2fe;
+    --color-primary-300: #a5b4fc;
+    --color-primary-400: #BEFFB8;
+    --color-primary-500: #6366f1;
+    --color-primary-600: #11C200;
+    --color-primary-700: #0EA300;
+    --color-primary-800: #11C200;
+    --color-primary-900: #312e81;
+    --color-primary-950: #1e1b4b;
+
+    --color-accent-50: #fffbeb;
+    --color-accent-100: #fef3c7;
+    --color-accent-200: #fde68a;
+    --color-accent-300: #fcd34d;
+    --color-accent-400: #fbbf24;
+    --color-accent-500: #f59e0b;
+    --color-accent-600: #d97706;
+    --color-accent-700: #b45309;
+    --color-accent-800: #92400e;
+    --color-accent-900: #78350f;
+    --color-accent-950: #451a03;
+}
+
+/* Base Styles */
+body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+/* Custom Utilities */
+.container-narrow {
+    @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-spacing {
+    @apply py-12 md:py-16 lg:py-24;
+}
+
+/* Smooth Transitions */
+* {
+    @apply transition-colors duration-200;
+}

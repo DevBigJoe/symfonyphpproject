@@ -1,0 +1,223 @@
+[
+  {
+    "email": "redak1@test.de",
+    "name": "redak1",
+    "roles": ["ROLE_REDAKTION"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-07-12T09:00:00+00:00"
+  },
+  {
+    "email": "redak2@test.de",
+    "name": "redak2",
+    "roles": ["ROLE_REDAKTION"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-07-14T10:15:00+00:00"
+  },
+  {
+    "email": "redak3@test.de",
+    "name": "redak3",
+    "roles": ["ROLE_REDAKTION"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-08-21T11:30:00+00:00"
+  },
+  {
+    "email": "redak4@test.de",
+    "name": "redak4",
+    "roles": ["ROLE_REDAKTION"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-09-21T14:45:00+00:00"
+  },
+  {
+    "email": "redak5@test.de",
+    "name": "redak5",
+    "roles": ["ROLE_REDAKTION"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-10-21T16:00:00+00:00"
+  },
+  {
+    "email": "admin1@test.de",
+    "name": "admin1",
+    "roles": ["ROLE_ADMIN"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-11-21T08:00:00+00:00"
+  },
+  {
+    "email": "admin2@test.de",
+    "name": "admin2",
+    "roles": ["ROLE_ADMIN"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-05-14T08:30:00+00:00"
+  },
+  {
+    "email": "admin3@test.de",
+    "name": "admin3",
+    "roles": ["ROLE_ADMIN"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-07-11T09:45:00+00:00"
+  },
+  {
+    "email": "user1@test.de",
+    "name": "user1",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-04-21T18:00:00+00:00"
+  },
+  {
+    "email": "user2@test.de",
+    "name": "user2",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-07-21T18:30:00+00:00"
+  },
+  {
+    "email": "user3@test.de",
+    "name": "user3",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-07-21T19:00:00+00:00"
+  },
+  {
+    "email": "user4@test.de",
+    "name": "user4",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-07-21T19:30:00+00:00"
+  },
+  {
+    "email": "user5@test.de",
+    "name": "user5",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": true,
+    "lastLogin": "2025-07-21T20:00:00+00:00"
+  },
+  {
+    "email": "user6@test.de",
+    "name": "user6",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef123456",
+    "lastLogin": "2025-10-05T08:15:00+00:00"
+  },
+  {
+    "email": "user7@test.de",
+    "name": "user7",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2025-11-01T12:45:00+00:00"
+  },
+  {
+    "email": "user8@test.de",
+    "name": "user8",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2025-11-20T15:30:00+00:00"
+  },
+  {
+    "email": "user9@test.de",
+    "name": "user9",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2025-12-15T10:00:00+00:00"
+  },
+  {
+    "email": "user10@test.de",
+    "name": "user10",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-01-10T09:15:00+00:00"
+  },
+  {
+    "email": "user11@test.de",
+    "name": "user11",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-01-25T14:45:00+00:00"
+  },
+  {
+    "email": "user12@test.de",
+    "name": "user12",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-01-30T11:30:00+00:00"
+  },
+  {
+    "email": "user13@test.de",
+    "name": "user13",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-02-01T16:00:00+00:00"
+  },
+  {
+    "email": "user14@test.de",
+    "name": "user14",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-02-01T18:30:00+00:00"
+  },
+  {
+    "email": "user15@test.de",
+    "name": "user15",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-02-01T20:00:00+00:00"
+  },
+  {
+    "email": "user16@test.de",
+    "name": "user16",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-02-01T21:45:00+00:00"
+  },
+  {
+    "email": "user17@test.de",
+    "name": "user17",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-02-01T22:15:00+00:00"
+  },
+  {
+    "email": "user18@test.de",
+    "name": "user18",
+    "roles": ["ROLE_USER"],
+    "password": "$2y$13$mBToGBk9nTBFQEYxCmKzi.C/RELZZ9Nmyqcz7Vnx6P3S1tJRm1zzO",
+    "isVerified": false,
+    "verificationToken": "abcdef654321",
+    "lastLogin": "2026-02-01T22:45:00+00:00"
+  }
+]

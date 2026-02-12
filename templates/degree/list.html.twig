@@ -1,0 +1,38 @@
+{% extends '@default/base.html.twig' %}
+
+{% block title %}Studiengänge – StudyShare{% endblock %}
+
+{% block body %}
+    <div class="section-spacing bg-slate-50 min-h-screen">
+        <div class="container-narrow">
+            <header class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900">
+                    Studiengänge
+                </h1>
+                <p class="mt-3 text-lg text-slate-600">
+                    Übersicht aller angebotenen Studiengänge.
+                </p>
+                <a href="{{ path('degrees_new') }}" class="mt-6 text-primary-600">
+                    Erstellen
+                </a>
+            </header>
+                <ul class="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+                    {% for degree in degrees %}
+                        <li>
+                            <a href="{{ path('degrees_show', { slug: degree.slug }) }}" class="block h-full rounded-2xl bg-white border border-slate-200/80 shadow-sm overflow-hidden no-underline text-inherit hover:bg-slate-50/50">
+                                <article class="h-full p-6 md:p-7">
+                                    <h2 class="text-xl font-semibold text-slate-900">
+                                        {{ degree.name }}
+                                    </h2>
+                                    <p class="mt-2 text-slate-600 text-sm leading-relaxed">
+                                        {{ degree.description }}
+                                    </p>
+
+                                </article>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+        </div>
+    </div>
+{% endblock %}

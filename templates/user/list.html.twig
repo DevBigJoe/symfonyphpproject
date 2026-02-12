@@ -1,0 +1,41 @@
+{% extends '@default/base.html.twig' %}
+
+{% block body %}
+
+	<!-- Health Dashboard Button passend zum Seitenstil -->
+    <div class="flex justify-center mb-6">
+        <a href="/health/dashboard"
+           class="bg-white border border-stone-200 text-stone-800 font-medium py-2 px-4 rounded shadow-sm hover:bg-stone-50 transition-colors">
+            Health Dashboard
+        </a>
+    </div>
+
+	<div class="flex justify-center mb-12 text-left bg-white border-t-stone-50 border-t-2 pt-4">
+		<table class="table-auto">
+			<thead>
+				<tr class="">
+					<th class="p-4">Email</th>
+					<th class="p-4">Rollen</th>
+					<th class="p-4">Registrierungsdatum</th>
+					<th class="p-4">Ist Verifiziert</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td class="p-4">
+							<a class="underline" href="/admin/users/{{user.id}}">{{user.email}}</a>
+						</td>
+						<td class="p-4">{{user.roles|map(s=>s|split('_')|last)|join(', ')}}</td>
+						<td class="p-4">{{user.createdAt|date('d.m.Y H:i')}}</td>
+						{% if user.isVerified %}
+							<td class="p-4">Ja</td>
+						{% else %}
+							<td class="p-4">Nein</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

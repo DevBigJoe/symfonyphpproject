@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{% block description %}HomePage showcasing functionality and usage.{% endblock %}">
+
+        <title>{% block title %}StudyShare-Home{% endblock %}</title>
+
+        {#<link rel="icon" href="">#}
+
+        {% block stylesheets %}
+            <link href="{{ asset('styles/app.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body class="flex flex-col min-h-screen">
+        {# Navigation #}
+        {% block navigation %}{% include '@default/_navigation.html.twig' %}{% endblock %}
+
+        {# Main Content #}
+        <main class="flex-grow">
+            {% block body %}{% endblock %}
+        </main>
+
+        {# Footer #}
+        {% block footer %}{% include '@default/_footer.html.twig' %}{% endblock %}
+        
+    </body>
+</html>

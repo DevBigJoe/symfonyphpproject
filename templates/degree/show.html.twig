@@ -1,0 +1,53 @@
+{% extends '@default/base.html.twig' %}
+
+{% block title %}{{degree.name}} – StudyShare{% endblock %}
+
+{% block body %}
+    <div class="section-spacing bg-slate-50 min-h-screen">
+        <div class="container-narrow">
+            <header class="relative text-center mb-12">
+
+                <form method="POST" action="{{ path('degrees_subscribe', {slug: degree.slug}) }}" style="margin-bottom: 1.5rem">
+                    <button
+                        type="submit"
+                        class="px-6 py-2 font-semibold rounded-lg
+                            {% if isSubscribed %}
+                                bg-slate-200 text-slate-700 cursor-not-allowed
+                            {% else %}
+                                bg-primary-600 hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 text-white
+                            {% endif %}"
+                        >
+                        {{ isSubscribed ? 'Studiengang abonniert' : 'Studiengang abonnieren' }}
+                    </button>
+                </form>
+
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900">
+                   {{degree.name}}
+                </h1>
+                <p class="mt-3 text-lg text-slate-600">
+                    Übersicht aller angebotenen Kurse.
+                </p>
+                <a href="{{ path('courses_new', {slug: degree.slug}) }}" class="mt-6 text-primary-600">
+                    Erstellen
+                </a>
+            </header>
+                <ul class="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+                    {% for course in courses %}
+                        <li>
+                            <a href="{{path('courses_show', {slug: course.slug})}}" class="block h-full rounded-2xl bg-white border border-slate-200/80 shadow-sm overflow-hidden no-underline text-inherit hover:bg-slate-50/50">
+                                <article class="h-full p-6 md:p-7">
+                                    <h2 class="text-xl font-semibold text-slate-900">
+                                        {{ course.name }}
+                                    </h2>
+                                    <p class="mt-2 text-slate-600 text-sm leading-relaxed">
+                                        {{ course.description }}
+                                    </p>
+
+                                </article>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+        </div>
+    </div>
+{% endblock %}

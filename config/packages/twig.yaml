@@ -1,0 +1,9 @@
+twig:
+    file_name_pattern: '*.twig'
+    paths:
+        'demo': demo
+        'templates': default
+
+when@test:
+    twig:
+        strict_variables: true

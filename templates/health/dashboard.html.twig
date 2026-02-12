@@ -1,0 +1,91 @@
+{% extends '@default/base.html.twig' %}
+
+{% block title %}System Health Dashboard{% endblock %}
+
+{% block body %}
+<section class="section-spacing bg-slate-50">
+    <div class="container-wide">
+        <div class="text-center mb-12">
+            <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Dashboard</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">System Health Dashboard</h2>
+            <p class="text-lg text-slate-600">Willkommen im Backend ❤️</p>
+        </div>
+
+        {# Status-Karten #}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+                <h3 class="text-lg font-semibold mb-2">Datenbankstatus</h3>
+                <p id="dbStatus" class="text-xl font-bold text-green-600">Loading...</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+                <h3 class="text-lg font-semibold mb-2">Login-Seitenstatus</h3>
+                <p id="loginStatus" class="text-xl font-bold text-green-600">Loading...</p>
+            </div>
+        </div>
+
+        {# Chart #}
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <canvas id="healthChart" class="w-full"></canvas>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let healthChart;
+
+async function loadHealthData() {
+    try {
+        const response = await fetch('/health');
+        const data = await response.json();
+
+        // Statusanzeigen aktualisieren
+        const dbStatusEl = document.getElementById('dbStatus');
+        dbStatusEl.textContent = data.status.toUpperCase();
+        dbStatusEl.className = data.status === 'ok' ? 'text-xl font-bold text-green-600' : 'text-xl font-bold text-red-600';
+
+        const loginStatusEl = document.getElementById('loginStatus');
+        loginStatusEl.textContent = data.loginPage?.toUpperCase() || 'ERROR';
+        loginStatusEl.className = data.loginPage === 'ok' ? 'text-xl font-bold text-green-600' : 'text-xl font-bold text-red-600';
+
+        // Chart erstellen / aktualisieren
+        const ctx = document.getElementById('healthChart').getContext('2d');
+        if (healthChart) healthChart.destroy();
+
+        healthChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Gesamte User', 'Gesamte Artikel', 'Aktive User (< 5 Monate)'],
+                datasets: [{
+                    label: 'Count',
+                    data: [
+                        data.users || 0,
+                        data.articles || 0,
+                        data.activeUsers || 0
+                    ],
+                    backgroundColor: ['#4CAF50', '#2196F3', '#FF9800']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Systemdaten' }
+                },
+                scales: { y: { beginAtZero: true, precision: 0 } }
+            }
+        });
+
+    } catch (error) {
+        console.error('Fehler beim Laden der Health-Daten:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHealthData();
+    setInterval(loadHealthData, 10000);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+Test_Update
+#11C200
+https://discord.gg/mcGeW8bdMc
+https://discord.gg/mcGeW8bdMc
+
+ENV FILES
+#ACHTUNG!: Vielleicht muss man den Cache leeren: 
+#   docker compose exec app bash
+#   bin/console ca:cl
+#XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html public/coverage

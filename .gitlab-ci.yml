@@ -1,0 +1,118 @@
+stages:
+  - build
+  - validate
+  - test
+
+variables:
+  IMAGE_NAME_CI: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+
+cache:
+    key: "${CI_COMMIT_REF_SLUG}"
+    paths:
+        - vendor/
+
+build:
+  stage: build
+  image: docker:latest
+  variables: 
+    PHP_VERSION: "804"
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+  script:
+    - docker build --pull --build-arg PHP_VERSION=$PHP_VERSION -t $IMAGE_NAME_CI-$PHP_VERSION docker
+    - docker push $IMAGE_NAME_CI-$PHP_VERSION
+
+composer_install:
+  stage: build
+  needs:
+    - job: build
+  image: $IMAGE_NAME_CI-$PHP_VERSION
+  variables: 
+    PHP_VERSION: "804"
+  script:
+    # Installiere PHP-Pakete ohne Scripts (damit Symfony-Bundles nicht fehlschlagen)
+    - composer -q -n install --optimize-autoloader
+  artifacts:
+    paths:
+      - vendor/
+
+phpstan:
+  stage: validate
+  image: $IMAGE_NAME_CI-$PHP_VERSION
+  needs:
+    - job: build
+    - job: composer_install
+      artifacts: true
+  variables: 
+    PHP_VERSION: "804"
+  before_script:
+    - php bin/console cache:warmup --env=dev
+  script:
+    - echo "PHP-Stan wird ausgeführt!"
+    - vendor/bin/phpstan analyse > phpStan.json
+  artifacts:
+    paths:
+      - phpStan.json
+    reports:
+      codequality: phpStan.json
+  allow_failure: true
+
+cs-fixer:
+  stage: validate
+  image: $IMAGE_NAME_CI-$PHP_VERSION
+  dependencies: 
+    - build
+  variables: 
+    PHP_VERSION: "804"
+  script:
+    - echo "CS-Fixer wird ausgeführt!"
+    - vendor/bin/php-cs-fixer fix --dry-run --diff --format=gitlab --using-cache=no > cs-fixer.json
+  artifacts:
+    paths:
+      - cs-fixer.json
+    reports:
+      codequality: cs-fixer.json
+  allow_failure: true
+
+test:
+  stage: test
+  image: $IMAGE_NAME_CI-$PHP_VERSION
+  variables:
+    XDEBUG_MODE: coverage
+  cache:
+    policy: pull
+  needs:
+      - job: phpstan
+      - job: composer_install
+        artifacts: true
+  services:
+    - name: postgres:15
+      alias: db
+  variables: 
+    XDEBUG_MODE: coverage
+    PHP_VERSION: "804"
+    POSTGRES_DB: web_app
+    POSTGRES_USER: app
+    POSTGRES_PASSWORD: '!ChangeMe!'
+    DATABASE_URL: "postgresql://app:!ChangeMe!@db:5432/web_app?serverVersion=15&charset=utf8"
+  before_script:
+    - ./bin/console importmap:install
+  script:
+    - echo "Tests werden ausgeführt!"
+    - vendor/bin/phpunit --version
+    - ./vendor/bin/phpunit --colors=never --testdox --log-junit report.xml --coverage-text --coverage-cobertura=coverage.cobertura.xml
+  artifacts:
+      when: on_success
+      paths:
+          - report.xml
+          - ./coverage.cobertura.xml        
+      reports:
+          junit: report.xml
+          coverage_report:
+              coverage_format: cobertura
+              path: ./coverage.cobertura.xml
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+
+
+
+  

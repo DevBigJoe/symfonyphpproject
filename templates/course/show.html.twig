@@ -1,0 +1,86 @@
+{% extends '@default/base.html.twig' %}
+
+{% block title %}{{course.name}} – StudyShare{% endblock %}
+
+{% block body %}
+<div class="section-spacing bg-slate-50 min-h-screen">
+<div class="container-narrow">
+    <header class="relative text-center mb-12">
+
+       <form method="POST" action="{{ path('courses_subscribe', {slug: course.slug}) }}" style="margin-bottom: 1.5rem">
+            <button
+                type="submit"
+                class="px-6 py-2 font-semibold rounded-lg
+                    {% if isSubscribed %}
+                        bg-slate-200 text-slate-700 cursor-not-allowed
+                    {% else %}
+                        bg-primary-600 hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 text-white
+                    {% endif %}"
+            >
+                {{ isSubscribed ? 'Kurs abonniert' : 'Kurs abonnieren' }}
+            </button>
+        </form>
+
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900">
+           {{course.name}}
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+            Lernunterlagen für diesen Kurs.
+        </p>
+        <a href="{{ path('articles_new', {course_slug: course.slug}) }}" class="mt-6 text-primary-600">
+            Erstellen
+        </a>
+    </header>
+</div>
+    {% for article in articles %}
+        <section class="section-spacing bg-slate-50">
+            <div class="container-narrow">
+                <div class="text-left mb-6">
+                    <span class="article-type text-primary-600 font-semibold text-sm uppercase tracking-wider">
+                        {{ article.articleType.translationKey|trans }}
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-2">
+                        {{ article.title }}
+                    </h2>
+                    <p class="text-lg text-slate-600">
+                        Von: {{ article.author.name }} - Veröffentlicht: 
+                        {% if article.publishedAt %}
+                            {{ article.publishedAt|format_datetime(pattern: "dd. MMMM yyyy, HH:mm 'Uhr'") }}
+                        {% else %}
+                            Nicht veröffentlicht
+                        {% endif %}
+                    </p>
+                    <p class="text-lg text-slate-600">
+                        {% if article.updatedAt and article.updatedAt != article.publishedAt%}
+                            Bearbeitet: {{ article.updatedAt|format_datetime(pattern: "dd. MMMM yyyy, HH:mm 'Uhr'") }}
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="prose prose-lg prose-slate max-w-none mb-4">
+                    {{ article.content|slice(0, 200) }}{% if article.content|length > 200 %}...{% endif %}
+                </div>
+
+                {% if article.uploadFilename %}
+                    <div class="mb-4">
+                        <a href="{{ asset('uploads/articles/' ~ article.uploadFilename) }}" 
+                           target="_blank" 
+                           class="px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700">
+                            Datei herunterladen
+                        </a>
+                    </div>
+                {% endif %}
+
+                <div>
+                    <a href="{{ path('articles_show', {slug: article.slug}) }}" 
+                       class="text-primary-600 hover:underline">
+                        Weiterlesen
+                    </a>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <p class="text-center text-slate-600 mt-12">Keine Artikel gefunden.</p>
+    {% endfor %}
+</div>
+{% endblock %}

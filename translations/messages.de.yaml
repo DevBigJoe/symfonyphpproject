@@ -1,0 +1,8 @@
+article_type:
+    Explanation: 'Erklärung'
+    ExampleExam: 'Beispielklausur'
+    FlashCards: 'Karteikarten'
+    Exercises: 'Übung'
+    LernSheet: 'Lernzettel'
+    Mindmap: 'Mindmap'
+    Transcript: 'Vorlesungsmitschrift'

@@ -1,0 +1,64 @@
+{% extends '@default/base.html.twig' %}
+
+{% block body %}
+<section class="section-spacing bg-white">
+    <div class="container-narrow">
+        <div class="text-left mb-12">
+            <span class="article-type text-primary-600 font-semibold text-sm uppercase tracking-wider">
+                {{ article.articleType.translationKey|trans }}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">
+                {{ article.title }}
+            </h2>
+            <p class="text-lg text-slate-600">
+                Von: {{ article.author.name }} - Veröffentlicht: 
+                {% if article.publishedAt %}
+                    {{ article.publishedAt|format_datetime(pattern: "dd. MMMM yyyy, HH:mm 'Uhr'") }}
+                {% else %}
+                    Nicht veröffentlicht
+                {% endif %}
+            </p>
+            <p class="text-lg text-slate-600">
+                {% if article.updatedAt and article.updatedAt != article.publishedAt%}
+                    Bearbeitet: {{ article.updatedAt|format_datetime(pattern: "dd. MMMM yyyy, HH:mm 'Uhr'") }}
+                {% endif %}
+            </p>
+        </div>
+
+        <div style="text-align: left; margin-bottom: 1.5rem;">
+            <button type="submit"class="px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <a href="{{ path('health_print_pdf', { id: article.id }) }}">
+                    📄 Als PDF herunterladen
+                </a>
+            </button>
+        </div>
+
+        <div class="prose prose-lg prose-slate max-w-none">
+            {{ article.content }}
+        </div>
+
+        {% if article.uploadFilename %}
+            <div style="text-align: left; margin-bottom: 1.5rem; margin-top: 1.5rem;">
+                <a href="{{ asset('uploads/articles/' ~ article.uploadFilename) }}" 
+                target="_blank"
+                style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #22c55e; color: white; font-weight: 600; border-radius: 0.5rem; text-decoration: none;">
+                    Datei herunterladen
+                </a>
+            </div>
+        {% endif %}
+
+        {#
+        {{ dump(article.id) }}
+        {{ dump(article.slug) }}
+        {{ dump(article.uploadFilename) }}
+        #}
+
+        <div style="text-align: left; margin-top: 1.5rem;">
+            <a href="{{ cancel_path }}" class="px-6 py-2 bg-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-300">
+                Zurück
+            </a>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
